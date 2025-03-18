@@ -248,6 +248,9 @@ local function repl_win_scroll_to_bottom(repl)
     if repl_win ~= -1 then
         local lines = api.nvim_buf_line_count(repl.bufnr)
         api.nvim_win_set_cursor(repl_win, { lines, 0 })
+        vim.api.nvim_win_call(repl_win, function()
+            vim.cmd('normal! zb')
+        end)
     end
 end
 
